@@ -46,7 +46,7 @@ with DAG(
         op_kwargs={"api_key": Variable.get("openweather_api_key")},
     )
     
-    # Task: Upload CSV string from Xcom into GCS
+    # Task: Upload CSV string from Xcom into GCS.
     def _upload_to_gcs(ds: str, **kwargs):
         ti = kwargs["ti"]
         csv_data = ti.xcom_pull(task_ids="extract_weather_data")
@@ -64,7 +64,7 @@ with DAG(
         op_kwargs = {"ds":"{{ds}}"},
     )
     
-    # Task 3: Trigger downstream DAG
+    # Task 3: Trigger downstream DAG.
     trigger_transform = TriggerDagRunOperator(
         task_id="trigger_data_transform_dag",
         trigger_dag_id="transformed_weather_data_to_bq",

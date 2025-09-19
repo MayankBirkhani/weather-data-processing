@@ -3,7 +3,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, from_unixtime, to timestamp
 
 def main():
-    # ------------------Config---------------------
+    # ------------------Config----------------------
     project     = "astute-impulse-448710-h3"
     dataset     = "forecast"
     table       = "weather_data"
@@ -12,7 +12,7 @@ def main():
     today       = datetime.date.today().strftime("%Y-%m-%d")
     input_path  = f"gs://{bucket}/weather/{today}/forecast.csv"
     
-    # ----------------- Spark Session ----------------
+    # ----------------- Spark Session -----------------
     spark =(
         SparkSession.builder
         .appName("WeatherDataProcessing")
